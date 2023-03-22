@@ -6,8 +6,13 @@ ruby "3.1.2"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4", ">= 7.0.4.1"
 
-# The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
-gem "sprockets-rails"
+# Front end serving and framework
+gem 'esbuild-rails'
+gem 'sassc-rails'
+gem 'tailwindcss-rails'
+
+# Authentication
+gem 'devise'
 
 # Use postgresql as the database for local and production
 gem 'pg'
@@ -17,9 +22,6 @@ gem "puma", "~> 5.0"
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
-
-# Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails"
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
@@ -66,6 +68,7 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
