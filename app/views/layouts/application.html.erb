@@ -1,35 +1,46 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SaasApp</title>
+    <title>Projjy</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
   </head>
 
-  <body class="bg-gray-900">
-  <!-- Navbar -->
-  <nav class="bg-gray-800">
-    <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-      <div class="relative flex items-center justify-between h-16">
-        <!-- Logo -->
-        <div class="flex-shrink-0">
-          <a href="/">
-            <a href="/" class="px-3 py-2 rounded-md text-xl text-gray-300">Projjy</a>
-          </a>
-        </div>
-        <!-- Navbar items -->
-        <div class="hidden md:block">
-          <div class="ml-10 flex items-baseline space-x-4">
-            <a href="/" class="px-3 py-2 rounded-md text-sm font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700">Home</a>
-            <a href="/about" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">About</a>
-            <a href="/contact" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Contact</a>
-          </div>
-        </div>
+  <body class="bg-gray-900 font-montserrat">
+  <nav class="bg-gray-100 py-4">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16">
+      <div class="flex-shrink-0 text-4xl flex items-center">
+        <%= link_to "Projjy", root_path, class: "font-medium text-gray-900" %>
+      </div>
+      <div class="font-serif hidden md:flex md:items-center md:ml-6">
+        <% if user_signed_in? %>
+          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900" %>
+        <% else %>
+          <%= link_to "Sign up", new_user_registration_path, class: "whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900" %>
+          <%= link_to "Sign in", new_user_session_path, class: "ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700" %>
+        <% end %>
+      </div>
+      <div class="-mr-2 flex font-serif md:hidden">
+        <button type="button" class="bg-white inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-expanded="false">
+          <span class="sr-only">Open main menu</span>
+          <!-- Heroicon name: menu -->
+          <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <!-- Heroicon name: x -->
+          <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
       </div>
     </div>
+  </div>
   </nav>
   <div class="flex h-screen">
       <div class="bg-gray-800 w-64 outline outline-1">
@@ -59,4 +70,5 @@
     <%= yield %>
   </main>
   </body>
-</html>
+</html>   <div class="ml-10 flex items-baseline space-x-4">
+        
