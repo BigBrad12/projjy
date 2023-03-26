@@ -13,3 +13,13 @@ production:
   url: <%= ENV['DATABASE_URL'] %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") {5} %>
   timeout: 5000 #set timeout in miliseconds
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  database: projjy
+  username: <% ENV["PGUSER"] %>
+  password: <% ENV["PGPASSWORD"] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") {5} %>
+  timeout: 5000 #set timeout in miliseconds

@@ -14,6 +14,9 @@ gem 'tailwindcss-rails'
 # Authentication
 gem 'devise'
 
+# Bundler
+gem 'bundler'
+
 # Use postgresql as the database for local and production
 gem 'pg'
 
@@ -68,8 +71,8 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-
-  gem "capybara"
-  gem "selenium-webdriver"
-  gem "webdrivers"
+  gem "rspec-rails", "~> 5.0.0"
+  gem "factory_bot_rails"
+  gem 'racc', '~> 1.6.2'
+  gem 'rack-test', '~> 2.1.0'
 end
