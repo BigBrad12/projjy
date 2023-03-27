@@ -3,20 +3,27 @@ require 'rails_helper'
 
 RSpec.describe Company, type: :model do
 
-  it "has a valid factory" do
-    expect(build(:company)).to be_valid
+  it "is invalid if zero users" do
+    expect(build(:company, :without_users)).not_to be_valid
   end
   
-  it "is invalid without a name" do
+  it "company invalid without a name" do
     company = build(:company, name: nil)
     expect(company).not_to be_valid
   end
-  
+
   it "has many users" do
-    company = create(:company)
-    user1 = create(:user, company: company )
-    user2 = create(:user, company: company )
-    expect(company.users.count).to eq(2)
+    company = build(:company)
+    users = build_list(:user, 5, company: company)
+  
+    # Associate the users with the company
+    company.users = users
+  
+    # Save the company and its associated users
+    company.save
+  
+    expect(company.users.count).to eq(5)
   end
+  
 
 end

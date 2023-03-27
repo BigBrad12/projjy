@@ -1,6 +1,8 @@
 FactoryBot.define do
+
 	factory :team do
-		name { "example team" }
-		company
-	end
+    name { "team1" }
+    company { association :company }
+  end
+
 end
