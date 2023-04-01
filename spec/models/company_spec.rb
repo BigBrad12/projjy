@@ -18,12 +18,21 @@ RSpec.describe Company, type: :model do
   
     # Associate the users with the company
     company.users = users
-  
     # Save the company and its associated users
     company.save
   
     expect(company.users.count).to eq(5)
   end
   
+  it "has many teams" do
+    company = build(:company)
+    users = build_list(:user, 5, company: company)
+    company.users = users
+    teams = build_list(:team, 5, company: company)
+    company.teams = teams
+    company.save
+
+    expect(company).to be_valid
+  end
 
 end

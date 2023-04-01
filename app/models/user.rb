@@ -9,7 +9,7 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { minimum: 2, maximum: 20 }
   validates :last_name, presence: true, length: { minimum: 2, maximum: 20 }
   validates_associated :company
-  validates_associated :team, message: "must belong to the same company as the user"
+  validate :user_assigned_to_team_in_same_company 
 
 
   # devise authentication settings
@@ -20,7 +20,7 @@ class User < ApplicationRecord
 
   # checks if the user is assigned to a team of the same company
   def user_assigned_to_team_in_same_company
-    if team.present? && team.company_id != company_id
+    if team.present? && team.company_id != user.company_id
       errors.add(:team, "must belong to the same company as the user")
     end
   end

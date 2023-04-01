@@ -11,7 +11,6 @@ FactoryBot.define do
     password { "password" }
 
     association :company
-    team { association :team, company: company }
   end
 end
   

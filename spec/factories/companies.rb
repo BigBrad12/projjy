@@ -8,9 +8,8 @@ FactoryBot.define do
     users { [] }
   end
 
-  after(:create) do |company|
-    create_list(:user, 2, :with_company, company: company)
-    create(:team, company: company)
+  trait :with_users do
+    users { build_list(:user, 2) }
   end
   
 end
