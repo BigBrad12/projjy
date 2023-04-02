@@ -1,7 +1,7 @@
 FactoryBot.define do
 
   factory :company do
-    name { "Example" }
+    name { "Celestial Cruises" }
   end
 
   trait :without_users do
@@ -9,7 +9,7 @@ FactoryBot.define do
   end
 
   trait :with_users do
-    users { build_list(:user, 2) }
+    users { build_list(:user, 2)}
   end
   
 end

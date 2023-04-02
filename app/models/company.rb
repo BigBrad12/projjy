@@ -5,6 +5,10 @@ class Company < ApplicationRecord
     validates :name, presence: :true, length: { minimum: 2, maximum: 30 }
     validates :users, presence: :true
 
+    def to_s
+      "#{id} #{name}"
+    end
+
     def all_teams
         self.teams
     end

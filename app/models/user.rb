@@ -1,7 +1,8 @@
 class User < ApplicationRecord
 
   # associations
-  belongs_to :team, optional: true
+  has_many :team_users
+  has_many :teams, through: :team_users
   belongs_to :company
 
   # validations
@@ -16,12 +17,19 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
+  def to_s
+    "#{name} #{email} #{teams} #{company}"
+  end
+
   private
 
   # checks if the user is assigned to a team of the same company
   def user_assigned_to_team_in_same_company
-    if team.present? && team.company_id != user.company_id
-      errors.add(:team, "must belong to the same company as the user")
+    teams.each do |team|
+      if team.company_id != company_id
+        errors.add(:team, "must belong to the same company as the user")
+        break
+      end
     end
   end
 end

@@ -2,5 +2,6 @@
     "emmet.includeLanguages": {
         "erb": "html",
         "html": "html"
-    }
+    },
+    "editor.fontLigatures": false
 }

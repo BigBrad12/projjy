@@ -1,8 +1,11 @@
 FactoryBot.define do
 
-	factory :team do
-    name { "team1" }
-    association :company
+  sequence :name do |t|
+    "team#{t}"
+  end
+
+  factory :team do
+    name { generate(:name) }
   end
 
 end

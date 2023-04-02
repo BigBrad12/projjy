@@ -3,16 +3,16 @@ require 'rails_helper'
 
 RSpec.describe Company, type: :model do
 
-  it "is invalid if zero users" do
+  it "needs to have a user assigned" do
     expect(build(:company, :without_users)).not_to be_valid
   end
   
-  it "company invalid without a name" do
+  it "needs a name" do
     company = build(:company, name: nil)
     expect(company).not_to be_valid
   end
 
-  it "has many users" do
+  it "can have many users" do
     company = build(:company)
     users = build_list(:user, 5, company: company)
   
@@ -24,7 +24,7 @@ RSpec.describe Company, type: :model do
     expect(company.users.count).to eq(5)
   end
   
-  it "has many teams" do
+  it "can have many teams" do
     company = build(:company)
     users = build_list(:user, 5, company: company)
     company.users = users
