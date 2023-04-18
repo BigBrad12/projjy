@@ -3,5 +3,19 @@
         "erb": "html",
         "html": "html"
     },
-    "editor.fontLigatures": false
+    "editor.fontLigatures": false,
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "editor.acceptSuggestionOnEnter": "off",
+    "editor.suggestOnTriggerCharacters": false,
+    "editor.inlineSuggest.enabled": false,
+    "typescript.suggest.enabled": false,
+    "typescript.suggest.includeAutomaticOptionalChainCompletions": false,
+    "editor.suggest.showInlineDetails": false,
+    "audioCues.lineHasInlineSuggestion": "off",
+    "editor.quickSuggestions": {
+        "other": "off"
+    },
+    "editor.snippetSuggestions": "none",
+    "editor.suggest.selectionMode": "never",
+    "editor.suggest.showClasses": false
 }

@@ -9,8 +9,6 @@ FactoryBot.define do
     name { "Brad" }
     last_name { "Slater" }
     password { "password" }
-
-    association :company
   end
 end
   

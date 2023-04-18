@@ -39,9 +39,7 @@ RSpec.describe User, type: :model do
     team = create(:team, company: company)
     team1 = create(:team, company: company)
     user = create(:user, company: company)
-    
-    team.users << user
-    team1.users << user
+       
     user.teams = [team, team1]
     user_teams = user.teams
 
@@ -51,6 +49,16 @@ RSpec.describe User, type: :model do
     end
 
     expect(user).to be_valid
+  end
+
+  it "can't be part of the same team twice" do
+    company = build(:company)
+    team = build(:team, company: company)
+    user = build(:user, company: company)
+    company.users = [user]
+    company.save
+
+    expect { user.teams = [team, team] }.to raise_error(ActiveRecord::RecordInvalid, /Validation failed: Team has already been taken/)
   end
 
 end
