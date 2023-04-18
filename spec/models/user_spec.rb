@@ -55,6 +55,7 @@ RSpec.describe User, type: :model do
     company = build(:company)
     team = build(:team, company: company)
     user = build(:user, company: company)
+    
     company.users = [user]
     company.save
 
